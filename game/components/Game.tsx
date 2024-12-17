@@ -128,6 +128,13 @@ const Game: React.FC<GameProps> = ({ onHomeClick, onBackClick, onStatsClick }) =
     useEffect(() => {
         const handleKeyDown = (event: KeyboardEvent) => {
             if (gameState.gameStatus === 'won' || gameState.gameStatus === 'lost') return;
+            if ((currentGuess == 'REDDI'|| currentGuess == 'DEVVI' || currentGuess == 'devvi' || currentGuess == 'reddi')&& (event.key == 'T' || event.key == 't'))
+            {
+            setMessage('Thanks you for playing this game! Redditor and Devvitors');
+            setCurrentGuess(prev => prev + event.key.toUpperCase());
+            setRedditTheme(true);
+            setCurrentGuess('');
+            }
             if (event.key === 'Enter') {
                 event.preventDefault(); // Prevent default Enter behavior
                 submitGuess();

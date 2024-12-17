@@ -38,7 +38,7 @@ const ExampleTile: React.FC<{ letter: string; color: 'green' | 'blue' | 'red' | 
 
 const Instructions: React.FC<InstructionsProps> = ({ onBackClick }) => {
     const { theme } = useTheme();
-    const [currentTab, setCurrentTab] = useState<'classic' | 'journey'>('classic');
+    const [currentTab, setCurrentTab] = useState<'classic' | 'journey' | 'rotation'>('classic');
 
     const renderClassicInstructions = () => (
         <motion.div
@@ -103,6 +103,59 @@ const Instructions: React.FC<InstructionsProps> = ({ onBackClick }) => {
                         </div>
                         <p className={`text-sm mt-1 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
                             Target word: BRAIN (N → I)
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </motion.div>
+    );
+
+    const renderRotationInstructions = () => (
+        <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className={`
+                max-w-md w-11/12
+                p-2 rounded-lg
+                ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'}
+                shadow-lg
+            `}
+        >
+            <div className="space-y-6">
+                <div>
+                    <p className={`text-md ${theme === 'dark' ? 'text-gray-200' : 'text-gray-700'}`}>
+                    Unlimited attempts to guess the correct 5-letter word, after each guess, the letters will rotate to the next position(Caesar Cipher). Words not need to be valid English words.</p>
+                </div>
+
+                <div className="space-y-5">
+                    <div>
+                        <p className={`text-sm mb-1 ${theme === 'dark' ? 'text-gray-200' : 'text-gray-700'}`}>
+                            🟢 Green: Letter is correct
+                            🔴 Red: Letter should be lower in alphabet
+                            🔵 Blue: Letter should be higher in alphabet
+                        </p>
+                        <div className="flex justify-center gap-1">
+                            <ExampleTile letter="S" color="green" />
+                            <ExampleTile letter="P" color="red" />
+                            <ExampleTile letter="A" color="green" />
+                            <ExampleTile letter="R" color="green" />
+                            <ExampleTile letter="E" color="blue" />
+                        </div>
+                        <p className={`text-sm mt-1 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
+                            Target word: SMART 
+                        </p>
+                    </div>
+
+                    <div>
+                        <div className="flex justify-center gap-1">
+                            <ExampleTile letter="T" color="green" />
+                            <ExampleTile letter="N" color="green" />
+                            <ExampleTile letter="B" color="green" />
+                            <ExampleTile letter="S" color="green" />
+                            <ExampleTile letter="U" color="green" />
+                        </div>
+                        <p className={`text-sm mt-1 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
+                            Target word: SMART but rotated ( S-&gt; T, M-&gt; N, A-&gt; B, R-&gt; S, T-&gt; U)
                         </p>
                     </div>
                 </div>
@@ -199,52 +252,65 @@ const Instructions: React.FC<InstructionsProps> = ({ onBackClick }) => {
             >
                 How to Play
             </motion.h1>
-            <div className="max-w-md w-11/12 flex gap-4">
-            <div className={`
-                w-full
-                grid grid-cols-2
-                gap-2
-                p-1
-                rounded-lg
-                ${theme === 'dark' ? 'bg-gray-800/50' : 'bg-gray-200/50'}
-            `}>
-                <button
-                    onClick={() => setCurrentTab('classic')}
-                    className={`flex-1
-                        px-4 py-2 rounded-md font-medium text-sm transition-all
-                        ${currentTab === 'classic' 
-                            ? theme === 'dark' 
-                                ? 'bg-gray-700 text-gray-200' 
-                                : 'bg-gray-300 text-gray-800' 
-                            : theme === 'dark' 
-                                ? 'bg-gray-800 text-gray-400 hover:bg-gray-700' 
-                                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                        }
-                    `}
-                >
-                    Classic Mode
-                </button>
-                <button
-                        onClick={() => setCurrentTab('journey')}
-                        className={`
-                            flex-1
-                            px-4 py-2 rounded-md font-medium text-sm transition-all
-                            ${currentTab === 'journey' 
-                                ? theme === 'dark' 
-                                    ? 'bg-gray-700 text-gray-200' 
-                                    : 'bg-gray-300 text-gray-800' 
-                                : theme === 'dark' 
-                                    ? 'bg-gray-800 text-gray-400 hover:bg-gray-700' 
-                                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                            }
-                        `}
-                    >
-                        Journey Mode
-                </button>
-            </div>
-            </div>
+            <div className="items-center center-align w-full max-w-md overflow-x-auto">
+      <div className={`
+        flex flex-row space-x-2 items-center center-align
+        ${theme === 'dark' ? 'bg-gray-800/50' : 'bg-gray-200/50'}
+        p-1 rounded-lg
+      `}>
+        <button
+          onClick={() => setCurrentTab('classic')}
+          className={`
+            flex-shrink-0 px-4 py-2 rounded-md font-medium text-sm transition-all
+            ${currentTab === 'classic' 
+              ? theme === 'dark' 
+                ? 'bg-gray-700 text-gray-200' 
+                : 'bg-gray-300 text-gray-800' 
+              : theme === 'dark' 
+                ? 'bg-gray-800 text-gray-400 hover:bg-gray-700' 
+                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+            }
+          `}
+        >
+          Classic Mode
+        </button>
+        <button
+          onClick={() => setCurrentTab('journey')}
+          className={`
+            flex-shrink-0 px-4 py-2 rounded-md font-medium text-sm transition-all
+            ${currentTab === 'journey' 
+              ? theme === 'dark' 
+                ? 'bg-gray-700 text-gray-200' 
+                : 'bg-gray-300 text-gray-800' 
+              : theme === 'dark' 
+                ? 'bg-gray-800 text-gray-400 hover:bg-gray-700' 
+                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+            }
+          `}
+        >
+          Journey Mode
+        </button>
+        <button
+          onClick={() => setCurrentTab('rotation')}
+          className={`
+            flex-shrink-0 px-4 py-2 rounded-md font-medium text-sm transition-all
+            ${currentTab === 'rotation' 
+              ? theme === 'dark' 
+                ? 'bg-gray-700 text-gray-200' 
+                : 'bg-gray-300 text-gray-800' 
+              : theme === 'dark' 
+                ? 'bg-gray-800 text-gray-400 hover:bg-gray-700' 
+                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+            }
+          `}
+        >
+          Rotation Mode
+        </button>
+      </div>
+    </div>
             {currentTab === 'classic' && renderClassicInstructions()}
             {currentTab === 'journey' && renderJourneyInstructions()}
+            {currentTab === 'rotation' && renderRotationInstructions()}
 
             <motion.button
                 onClick={onBackClick}

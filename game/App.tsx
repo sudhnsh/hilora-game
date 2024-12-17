@@ -6,9 +6,10 @@ import Instructions from './components/Instructions';
 import Statics from './components/Stats';
 import GameMode from './components/GameMode';
 import JourneyGame from './components/JourneyGame';
+import RotationGame from './components/RotationGame';
 import { useState } from 'react';
 
-type Page = 'home' | 'game' | 'instructions' | 'stats' | 'gameMode' | 'journey';
+type Page = 'home' | 'game' | 'instructions' | 'stats' | 'gameMode' | 'journey'| 'rotation';
 
 function App() {
   // const initData = useDevvitListener('INIT_RESPONSE');
@@ -35,6 +36,7 @@ function App() {
             onClassicClick={() => setCurrentPage('game')}
             onJourneyClick={() => setCurrentPage('journey')}
             onBackClick={() => setCurrentPage('home')}
+            onRotationClick={() => setCurrentPage('rotation')}
           />
         );
       case 'game':
@@ -52,6 +54,12 @@ function App() {
         onHomeClick={() => setCurrentPage('home')}
         onBackClick={() => setCurrentPage('gameMode')}
         onPlayAgainClick={() => setCurrentPage('journey')}
+        />;
+      case 'rotation':
+        return <RotationGame
+        onHomeClick={() => setCurrentPage('home')}
+        onBackClick={() => setCurrentPage('gameMode')}
+        onPlayAgainClick={() => setCurrentPage('rotation')}
         />;
     }
   };

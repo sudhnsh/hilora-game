@@ -1,42 +1,37 @@
-## Devvit Webview React
 
-A template repository for writing webview apps with Devvit.
+# **Hilora: The 5-Letter Guessing Game**
 
-https://github.com/user-attachments/assets/5bf4d6ec-5ff1-49ce-8c50-f46e7fbac781
+Guess the secret 5-letter word by entering guesses and receiving color-coded feedback. The game uses color cues to help players zero in on the correct word by showing how close their guesses are.
 
-### Tech
+### **Example**:  
+If the secret word is **“apple”**:
 
-- [Devvit](https://developers.reddit.com/docs/): Reddit’s Developer Platform that lets you build powerful apps and experiences to enhance the communities you love.
-- [Vite](https://vite.dev/): Advanced build tool for the web
-- [React](https://react.dev/): UI Library for the web
-- [TailwindCSS](https://tailwindcss.com/): Utility first CSS framework
-- [Typescript](https://www.typescriptlang.org/): Strongly typed Javascript superset
-- [Motion](https://motion.dev/): Animation Library
+- **grape**: would have the following feedback:
+  - **g**: **red** (since "g" is alphabetically greater than "a").
+  - **r**: **red** (since "r" is alphabetically greater than "p").
+  - **a**: **blue** (since "a" is alphabetically smaller than "p").
+  - **p**: **blue** (since "p" is alphabetically smaller than "l").
+  - **e**: **green** (since "e" is correct and in the right position).
 
-## Getting started
+**Color Key**:  
+- **Green**: Correct letter, correct position.
+- **Red**: The guessed letter is alphabetically **greater** than the correct letter.
+- **Blue**: The guessed letter is alphabetically **smaller** than the correct letter.
 
-> Make sure you have Node 22 downloaded on your machine before running!
+---
 
-```sh
-git clone ....
+## **Playing**
 
-cd ...
+This is the app that runs the **Hilora** game on Reddit. Feel free to stop by, guess the 5-letter word, and challenge yourself every day!
 
-npm install
-```
+---
 
-Before continuing, make a subreddit on Reddit.com. This will be where you do your own development. Go to Reddit.com, scroll the left side bar down to communities, and click "Create a community."
+## **Installing on Another Subreddit**
 
-Next, go to the `package.json` and update see the `dev:devvit` command. Update the command to have you subreddit name.
+You can install **Hilora** on your own subreddit if you want to give it a try. Simply install the app onto your subreddit. Once installed, it will automatically run installation jobs and start posting new daily challenges for your community to play.
 
-Finally go to `devvit.yaml` and name your app. It has to be 0-16 characters. Once you have, click save, and run `npm run upload` from the root of the repository.
+---
 
-Now all you have to do is run `npm run dev` and navigate to the subreddit.
+## **Source Code**
 
-There is one last gotcha! You need to make a new post before you can see it. You can do so by going to your subreddit, clicking the three dots, and tapping "Make my experience post". After you start developing your all please update the menu item copy (found in `src/main.tsx`).
-
-## Commands
-
-- `npm run dev`: Starts a development server where you can develop your application live on Reddit.
-- `npm run upload`: Uploads a new version of your app
-- `npm run vite`: Useful to run just the React app on your machine if you need to style things quickly.
+The code for **Hilora** is open source! You are welcome to suggest improvements, fork the repository, and submit pull requests for new features and improvements.
