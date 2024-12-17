@@ -22,7 +22,7 @@ If the secret word is **“apple”**:
 
 ## **Playing**
 
-This is the app that runs the (**Hilora**)[https://www.reddit.com/r/HiLoRA/] game on Reddit. Feel free to stop by, guess the 5-letter word, and challenge yourself every day!
+This is the app that runs the [**Hilora**](https://www.reddit.com/r/HiLoRA/) game on Reddit. Feel free to stop by, guess the 5-letter word, and challenge yourself every day!
 
 ---
 
