@@ -18,7 +18,6 @@ export interface GameState {
 
 Devvit.configure({
   redditAPI: true,
-  http: true,
   redis: true,
   realtime: true,
 });
@@ -140,7 +139,7 @@ Devvit.addCustomPostType({
                   break;
                 case 'GET_POKEMON_REQUEST':
                   context.ui.showToast({ text: `Received message: ${JSON.stringify(data)}` });
-                  const pokemon = await getPokemonByName(data.payload.name);
+                  const pokemon = getPokemonByName(data.payload.name);
 
                   sendMessageToWebview(context, {
                     type: 'GET_POKEMON_RESPONSE',

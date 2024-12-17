@@ -15,7 +15,7 @@
 - **Multiple Game Modes**:  
    - **Classic Mode**: Guess the word in **7 attempts**.  
    - **Journey Mode**: Feedback is provided for **one letter at a time**, progressively revealing clues.  
-   - **Rotation Mode**: After each guess, the word shifts using a **Caesar cipher (+1)**, challenging players to adapt as the word changes dynamically.  
+   - **Rotation Mode**: After each guess, the word shifts using a **Caesar cipher (+1)**, challenging players to adapt as the word changes dynamically.**(If you like challenges, this is the one for you!)**
 - **Daily Challenges**: Fresh word challenges are posted automatically every day.  
 - **Community Focused**: Designed to run seamlessly on Reddit, encouraging users to play, share, and compete.  
 - **Automation with Devvit APIs**: Game management, posts, and feedback responses are automated for smooth functionality.  
